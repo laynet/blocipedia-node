@@ -1,0 +1,19 @@
+{
+  "name": "blocipedia-node",
+  "version": "1.0.0",
+  "description": "A wikipedia-like application for users to create, collaborate, and shar wikis",
+  "main": "index.js",
+  "scripts": {
+    "test": "export NODE_ENV=test&& jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "blocipedia-node"
+  },
+  "author": "Layne Taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laynet/bolicipedia-node/issues"
+  },
+  "homepage": "https://github.com/laynet/bolicipedia-node#readme"
+}
