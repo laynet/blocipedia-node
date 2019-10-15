@@ -1,5 +1,7 @@
 module.exports = {
   index(req, res, next) {
-    res.send("Welcome to Blocipedia");
+    res.send("static/index", {
+      title: "Welcome to Blocipedia, staticController"
+    });
   }
 };
