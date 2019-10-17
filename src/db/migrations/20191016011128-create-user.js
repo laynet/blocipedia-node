@@ -2,6 +2,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {
+      username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,9 +18,9 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      validate: {
-        isEmail: { msg: "must be a valid email" }
-      },
+      // validate: {
+      //   isEmail: { msg: "must be a valid email" }
+      // },
       password: {
         allowNull: false,
         type: Sequelize.STRING

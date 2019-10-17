@@ -1,5 +1,8 @@
 module.exports = {
-  signup(req, res, next) {
+  signUp(req, res, next) {
     res.render("users/signup");
+  },
+  create(req, res, next) {
+    //new user here
   }
 };
