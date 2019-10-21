@@ -22,7 +22,7 @@ module.exports = {
         const msg = {
           to: newUser.email,
 
-          from: "test@example.com",
+          from: "layneingramtaylor@gmail.com",
           subject: "Sending with Twilio SendGrid is Fun",
           text: "and easy to do anywhere, even with Node.js",
           html: "<strong>and easy to do anywhere, even with Node.js</strong>"

@@ -1,5 +1,6 @@
 module.exports = {
   validateUsers(req, res, next) {
+    console.log("VALIDATION REQ>BODY", req.body);
     if (req.method === "POST") {
       req
         .checkBody("username", "must be at least 4 characters in length")

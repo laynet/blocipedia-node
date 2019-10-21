@@ -6,7 +6,6 @@ module.exports = {
     res.render("users/signup");
   },
   create(req, res, next) {
-    console.log("CREATE IN USERCONTROLLER RAN");
     let newUser = {
       username: req.body.username,
       emaile: req.body.email,
