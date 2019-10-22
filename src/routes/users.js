@@ -5,6 +5,6 @@ const userController = require("../controllers/userController");
 const User = require("../../src/db/models").User;
 
 router.get("/users/sign_up", userController.signUp);
-router.post("/users/sign_up", validation.validateUsers, userController.create);
+router.post("/users/sign_up", validation.validateUsers, userController.signUp);
 
 module.exports = router;
