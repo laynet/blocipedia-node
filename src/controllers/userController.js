@@ -7,6 +7,9 @@ module.exports = {
   signUp(req, res, next) {
     res.render("users/signup");
   },
+  signIn(req, res, next) {
+    res.render("users/sign_in");
+  },
   create(req, res, next) {
     let newUser = {
       username: req.body.username,

@@ -1,0 +1,8 @@
+make comparePassword function using bcrypt compare logic with hashed password
+
+PASSPORT - create a POST route for the login endpoint - use local passport strategy via the passport middleware to authenticaet user
+
+SECURE ROUTES - add requires to routes/users.js, create wuth middleware and add middleware to all requests that need auth
+need to authenticate before calling controller
+
+signout route
