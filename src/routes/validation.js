@@ -1,3 +1,5 @@
+// const expressValidator = require("express-validator");
+
 module.exports = {
   validateSignUpUsers(req, res, next) {
     if (req.method === "POST") {
@@ -24,11 +26,10 @@ module.exports = {
     }
   },
   validateSignInUsers(req, res, next) {
+    console.log("VALIDATIONSIGNINUSERS ", req.body);
     if (req.method === "POST") {
-      req.checkBody("username", "must be valid").isUsername();
-      req
-        .checkBody("passwordConfirmation", "must match password provided")
-        .matches(req.body.password);
+      req.checkBody("email", "must be valid").isEmail();
+      req.checkBody("password", "must match password provided").exists();
     }
 
     const errors = req.validationErrors();

@@ -11,7 +11,7 @@ router.post(
 );
 router.get("/users/sign_in", userController.signInForm);
 router.post(
-  "users/sign_in",
+  "/users/sign_in",
   validation.validateSignInUsers,
   userController.signIn
 );
