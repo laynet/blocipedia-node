@@ -7,7 +7,7 @@ module.exports = {
   signUp(req, res, next) {
     res.render("users/signup");
   },
-  signIn(req, res, next) {
+  signInForm(req, res, next) {
     res.render("users/sign_in");
   },
   create(req, res, next) {
@@ -36,5 +36,19 @@ module.exports = {
         sgMail.send(msg);
       }
     });
+  },
+  signIn(req, res, next) {
+    passport.authenticate("local")(req, res, () => {
+      if (!req.user) {
+        req.flash("notice", "Sign in fialed. Please try again.");
+        res.redirect("/users/sign_in");
+      } else {
+        req.flash("notice", "You've successfully signed in!");
+        res.redirect("/");
+      }
+    });
+  },
+  signOut(req, res, next) {
+    res.render("/");
   }
 };

@@ -6,3 +6,8 @@ SECURE ROUTES - add requires to routes/users.js, create wuth middleware and add 
 need to authenticate before calling controller
 
 signout route
+
+
+**Maybe no "confirm password" on sign in form
+
+**validation.js maybe need passwordConfirmation for matching instead of password???
