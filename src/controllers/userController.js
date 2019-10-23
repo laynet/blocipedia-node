@@ -40,7 +40,7 @@ module.exports = {
   signIn(req, res, next) {
     passport.authenticate("local")(req, res, () => {
       if (!req.user) {
-        req.flash("notice", "Sign in fialed. Please try again.");
+        req.flash("notice", "Sign in failed. Please try again.");
         res.redirect("/users/sign_in");
       } else {
         req.flash("notice", "You've successfully signed in!");
@@ -49,6 +49,8 @@ module.exports = {
     });
   },
   signOut(req, res, next) {
-    res.render("/");
+    req.logout();
+    req.flash("notice", "You've successfully signed out!");
+    res.redirect("/");
   }
 };

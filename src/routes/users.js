@@ -15,5 +15,6 @@ router.post(
   validation.validateSignInUsers,
   userController.signIn
 );
+router.get("/users/sign_out", userController.signOut);
 
 module.exports = router;
