@@ -1,5 +1,3 @@
-// const expressValidator = require("express-validator");
-
 module.exports = {
   validateSignUpUsers(req, res, next) {
     if (req.method === "POST") {
@@ -26,14 +24,14 @@ module.exports = {
     }
   },
   validateSignInUsers(req, res, next) {
-    console.log("VALIDATIONSIGNINUSERS ", req.body);
+    console.log("REQ>BODY", req.body);
     if (req.method === "POST") {
       req.checkBody("email", "must be valid").isEmail();
       req.checkBody("password", "must match password provided").exists();
     }
 
     const errors = req.validationErrors();
-
+    console.log("ERRORS ", errors);
     if (errors) {
       req.flash("error", errors);
       return res.redirect(req.headers.referer);

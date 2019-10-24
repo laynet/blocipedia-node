@@ -38,6 +38,7 @@ module.exports = {
     });
   },
   signIn(req, res, next) {
+    console.log("REQ USER", req.user);
     passport.authenticate("local")(req, res, () => {
       if (!req.user) {
         req.flash("notice", "Sign in failed. Please try again.");
