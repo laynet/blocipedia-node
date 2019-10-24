@@ -24,14 +24,13 @@ module.exports = {
     }
   },
   validateSignInUsers(req, res, next) {
-    console.log("REQ>BODY", req.body);
     if (req.method === "POST") {
       req.checkBody("email", "must be valid").isEmail();
       req.checkBody("password", "must match password provided").exists();
     }
 
     const errors = req.validationErrors();
-    console.log("ERRORS ", errors);
+    // console.log("ERRORS ", errors);
     if (errors) {
       req.flash("error", errors);
       return res.redirect(req.headers.referer);

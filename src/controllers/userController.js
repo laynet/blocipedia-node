@@ -1,6 +1,7 @@
 const userQueries = require("../db/queries.users.js");
 const passport = require("passport");
 const sgMail = require("@sendgrid/mail");
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = {
@@ -38,10 +39,12 @@ module.exports = {
     });
   },
   signIn(req, res, next) {
-    console.log("REQ USER", req.user);
+    // console.log("REQ USER", req);
+
     passport.authenticate("local")(req, res, () => {
+      console.log("BEFORE REQ.USER IN USER CONTROLLER");
       if (!req.user) {
-        req.flash("notice", "Sign in failed. Please try again.");
+        // req.flash("notice", "Sign in failed. Please try again.");
         res.redirect("/");
       } else {
         req.flash("notice", "You've successfully signed in!");

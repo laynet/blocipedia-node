@@ -17,18 +17,24 @@ module.exports = {
           usernameField: "email"
         },
         (email, password, done) => {
+          console.log("EMAIL & PASSWORD ", email, password);
           User.findOne({
             where: { email }
-          }).then(user => {
-            // #4
-            if (!user || !authHelper.comparePass(password, user.password)) {
-              return done(null, false, {
-                message: "Invalid email or password"
-              });
-            }
-            // #5
-            return done(null, user);
-          });
+          })
+            .then(user => {
+              // #4
+              if (!user || !authHelper.comparePass(password, user.password)) {
+                console.log("USER ", user);
+                console.log("Hello");
+                return done(null, false, {
+                  message: "Invalid email or password"
+                });
+              }
+              // #5
+              return done(null, user);
+            })
+            .catch()
+            .done();
         }
       )
     );
