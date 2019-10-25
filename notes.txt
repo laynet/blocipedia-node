@@ -1,3 +1,5 @@
 authorizer for policies wiki.js
 
 using one to many association
+
+* add authorizer to new in wikicontroller
