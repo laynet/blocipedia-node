@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Wiki, {
       foreignKey: "userId",
-      onDelete: "CASCADE"
+      as: "wikis"
     });
   };
   return User;
