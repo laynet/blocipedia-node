@@ -1,1 +1,3 @@
-flash not showing for signout
+authorizer for policies wiki.js
+
+using one to many association
