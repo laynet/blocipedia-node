@@ -39,12 +39,13 @@ module.exports = {
     });
   },
   signIn(req, res, next) {
-    console.log("SIGN IN");
+    console.log("SIGN IN", req.user);
     passport.authenticate("local", function(err, user, info) {
       if (!user) {
         req.flash("notice", "Sign in failed. Please try again.");
         res.redirect("/");
       } else {
+        console.log("IF USER ", req.user);
         req.flash("notice", "You've successfully signed in!");
         res.redirect("/");
       }
