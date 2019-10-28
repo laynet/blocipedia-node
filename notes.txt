@@ -3,3 +3,7 @@ authorizer for policies wiki.js
 using one to many association
 
 * add authorizer to new in wikicontroller
+
+* sign out isn't showing once i'm signed in
+
+*should i re-direct to the wikis index page after signing in?
