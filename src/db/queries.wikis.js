@@ -10,8 +10,16 @@ module.exports = {
         callback(err);
       });
   },
+  getWiki(id, callback) {
+    return Wiki.findById(id)
+      .then(wiki => {
+        callback(null, wiki);
+      })
+      .catch(err => {
+        callback(err);
+      });
+  },
   addWiki(newWiki, callback) {
-    console.log("NEW WIKI RUNNING");
     return Wiki.create({
       title: newWiki.title,
       body: newWiki.body,
