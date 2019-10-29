@@ -4,11 +4,11 @@ using one to many association
 
 * add authorizer to new in wikicontroller
 
-* sign out isn't showing once i'm signed in
 
-*should i re-direct to the wikis index page after signing in?
+after editing is redirecting to ```Not Found. Redirecting to /wikis/4/edit```
 
-session id is not the same
-'QH6D2ICIX1So8aaaNhCgwfQCP-Y2cmCP'
+ADD AUTHORIZER TO EVERYTHING
 
-what key should i be printing out of the request to see if the request actually happened??
+signing out from anywhere other than index gives you Cannot GET /wikis/users/sign_out
+
+*should be able to view wikis from index page without signing in
