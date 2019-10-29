@@ -7,3 +7,8 @@ using one to many association
 * sign out isn't showing once i'm signed in
 
 *should i re-direct to the wikis index page after signing in?
+
+session id is not the same
+'QH6D2ICIX1So8aaaNhCgwfQCP-Y2cmCP'
+
+what key should i be printing out of the request to see if the request actually happened??
