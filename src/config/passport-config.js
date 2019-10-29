@@ -17,7 +17,6 @@ module.exports = {
           usernameField: "email"
         },
         (email, password, done) => {
-          console.log("EMAIL & PASSWORD ", email, password);
           User.findOne({
             where: { email }
           })

@@ -30,7 +30,7 @@ module.exports = {
     }
 
     const errors = req.validationErrors();
-    // console.log("ERRORS ", errors);
+
     if (errors) {
       req.flash("error", errors);
       return res.redirect(req.headers.referer);
