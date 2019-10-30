@@ -19,7 +19,7 @@ module.exports = {
       res.render("wikis/new");
     } else {
       req.flash("notice", "You are not authorized to do that.");
-      res.redirect("/wikis");
+      res.redirect("/wikis/index");
     }
   },
   create(req, res, next) {
@@ -45,6 +45,7 @@ module.exports = {
   },
   show(req, res, next) {
     wikiQueries.getWiki(req.params.id, (err, wiki) => {
+      console.log("SHOW ERROR ", err);
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {

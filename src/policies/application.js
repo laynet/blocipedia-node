@@ -4,15 +4,15 @@ module.exports = class ApplicationPolicy {
     this.record = record;
   }
 
+  _isStandard() {
+    return this.user && this.user.role == "standard";
+  }
   //   _isOwner() {
   //     return this.record && this.record.userId == this.user.id;
   //   }
   //   _isAdmin() {
   //     return this.user && this.user.role == "admin";
   //   }
-  _isStandard() {
-    return this.user && this.user.role == "standard";
-  }
   //   _isPremium() {
   //     return this.user && this.user.role == "premium";
   //   }

@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       role: {
         type: DataTypes.STRING,
         allowNull: false,
-        defautValue: "member"
+        defautValue: "standard"
       }
     },
     {}
@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       as: "wikis"
     });
   };
-  User.prototype.isAdmin = function() {
-    return this.role === "admin";
+  User.prototype.isStandard = function() {
+    return this.role === "standard";
   };
 
   return User;
