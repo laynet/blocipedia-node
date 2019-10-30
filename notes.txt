@@ -12,3 +12,8 @@ ADD AUTHORIZER TO EVERYTHING
 signing out from anywhere other than index gives you Cannot GET /wikis/users/sign_out
 
 *should be able to view wikis from index page without signing in
+
++++++++++
+You are not authorized to do that.,You are not authorized to do that.  - flashing on landing page
+new wikis Cannot GET /wikis
+unauthorized is flashing with wrong sign in instead of flash

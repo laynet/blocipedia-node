@@ -1,4 +1,5 @@
 const wikiQueries = require("../db/queries.wikis.js");
+const Authorizer = require("../policies/wiki");
 
 module.exports = {
   index(req, res, next) {
@@ -13,6 +14,7 @@ module.exports = {
   },
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
+    console.log("ADD WIKI REQ.USER ", req.user);
     if (authorized) {
       res.render("wikis/new");
     } else {
@@ -21,7 +23,7 @@ module.exports = {
     }
   },
   create(req, res, next) {
-    const authorized = new Authorizer(eq.user).create();
+    const authorized = new Authorizer(req.user).create();
     if (authorized) {
       let newWiki = {
         title: req.body.title,
@@ -75,9 +77,9 @@ module.exports = {
     });
   },
   update(req, res, next) {
-    wikiQueries.updateWiki(req.params.id, req.body, (err, wiki) => {
+    wikiQueries.updateWiki(req, req.body, (err, wiki) => {
       if (err || wiki == null) {
-        res.redirect(404, `/wikis/${req.params.id}/edit`);
+        res.redirect(401, `/wikis/${req.params.id}/edit`);
       } else {
         res.redirect(`/wikis/${req.params.id}`);
       }
