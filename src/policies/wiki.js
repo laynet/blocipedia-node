@@ -2,7 +2,7 @@ const ApplicationPolicy = require("./application");
 
 module.exports = class WikiPolicy extends ApplicationPolicy {
   new() {
-    this._isStandard();
+    return this._isStandard();
   }
   create() {
     return this.new();

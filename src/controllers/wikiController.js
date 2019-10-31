@@ -14,6 +14,7 @@ module.exports = {
   },
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
+    console.log("!!!!!!!!!!!!!!!!!", authorized);
     console.log("ADD WIKI REQ.USER ", req.user);
     if (authorized) {
       res.render("wikis/new");
@@ -67,7 +68,7 @@ module.exports = {
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {
-        const authorized = new Authorizer(eq.user).edit();
+        const authorized = new Authorizer(req.user).edit();
         if (authorized) {
           res.render("wikis/edit", { wiki });
         } else {

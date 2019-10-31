@@ -5,6 +5,10 @@ module.exports = class ApplicationPolicy {
   }
 
   _isStandard() {
+    console.log(
+      "POLICIES APPLICATION",
+      this.user && this.user.role == "standard"
+    );
     return this.user && this.user.role == "standard";
   }
   //   _isOwner() {
