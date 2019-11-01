@@ -17,8 +17,17 @@ signing out from anywhere other than index gives you Cannot GET /wikis/users/sig
 DB FIX
 sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test && sequelize db:seed:all
 
-
+POSTGRES IMPORTANT SHIT  I AM USING BLOCIPEDIA DEV
+psql -U postgres (!to get into postgres)
+\l to list db
+\c to connect to a db
+\dt to list table names
 
 postgres-# \c blocipedia
+NEED TO ADD ADMIN ROLE AND CHECK AT SOME POINT FROM THE USER ROLES CHKPNT
 
-osdivnoaisdnvoinvds
+postgres=# SELECT * FROM Users;
+ERROR:  relation "users" does not exist
+LINE 1: SELECT * FROM Users;
+                      ^
+postgres=# exit

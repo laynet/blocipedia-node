@@ -8,6 +8,14 @@ let wikis = [
     private: false,
     createdAt: new Date(),
     updatedAt: new Date(),
+    userId: 1
+  },
+  {
+    title: faker.hacker.noun(),
+    body: faker.hacker.phrase(),
+    private: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
     userId: 2
   },
   {
@@ -17,14 +25,6 @@ let wikis = [
     createdAt: new Date(),
     updatedAt: new Date(),
     userId: 3
-  },
-  {
-    title: faker.hacker.noun(),
-    body: faker.hacker.phrase(),
-    private: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    userId: 4
   }
 ];
 module.exports = {
