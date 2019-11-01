@@ -80,6 +80,7 @@ module.exports = {
   },
   update(req, res, next) {
     wikiQueries.updateWiki(req, req.body, (err, wiki) => {
+      console.log("UPDATE ERROR ", err);
       if (err || wiki == null) {
         res.redirect(401, `/wikis/${req.params.id}/edit`);
       } else {
