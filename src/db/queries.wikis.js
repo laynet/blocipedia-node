@@ -39,6 +39,7 @@ module.exports = {
 
   deleteWiki(req, callback) {
     return Wiki.findById(req.params.id)
+
       .then(wiki => {
         const authorized = new Authorizer(req.user, wiki).destroy();
         if (authorized) {

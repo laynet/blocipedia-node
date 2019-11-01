@@ -5,7 +5,6 @@ module.exports = {
   index(req, res, next) {
     wikiQueries.getAllWikis((err, wikis) => {
       if (err) {
-        console.log("ERROR ", err);
         res.redirect(500, "static/index");
       } else {
         res.render("wikis/index", { wikis });
@@ -14,8 +13,7 @@ module.exports = {
   },
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
-    console.log("!!!!!!!!!!!!!!!!!", authorized);
-    console.log("ADD WIKI REQ.USER ", req.user);
+
     if (authorized) {
       res.render("wikis/new");
     } else {
@@ -55,7 +53,7 @@ module.exports = {
     });
   },
   destroy(req, res, next) {
-    wikiQueries.deleteWiki(req.params.id, (err, wiki) => {
+    wikiQueries.deleteWiki(req, (err, wiki) => {
       if (err) {
         res.redirect(500, `/wikis/${wiki.id}`);
       } else {
