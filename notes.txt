@@ -20,3 +20,5 @@ sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db
 
 
 postgres-# \c blocipedia
+
+osdivnoaisdnvoinvds
