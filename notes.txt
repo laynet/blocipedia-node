@@ -13,3 +13,10 @@ signing out from anywhere other than index gives you Cannot GET /wikis/users/sig
 
 *should be able to view wikis from index page without signing in
 
+
+DB FIX
+sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test && sequelize db:seed:all
+
+
+
+postgres-# \c blocipedia

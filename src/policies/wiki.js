@@ -8,7 +8,7 @@ module.exports = class WikiPolicy extends ApplicationPolicy {
     return this.new();
   }
   edit() {
-    return this.create();
+    return this._isStandard();
   }
   update() {
     return this.edit();
