@@ -1,1 +1,39 @@
-<h1>!!!!!!!!!!!!!!!!!!!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+      <% include ../static/partials/messages.ejs %> <% if(currentUser &&
+      currentUser.role == "standard") { %>
+      <header class="jumbotron my-3">
+        <h1 class="display-5">Upgrade to premium membership.</h1>
+        <p class="lead">No contract. Cancel anytime. $10 a month.</p>
+        <ul>
+          <li>Create private wikis.</li>
+          <li>Increase engagement.</li>
+          <li>Collaborate with other premium members.</li>
+        </ul>
+      </header>
+      <h1>stripe TODO</h1>
+      <% } else { %> <% if(currentUser.role === "premium"); { %>
+      <header class="jumbotron my-3">
+        <h1>
+          Are you sure you want to downgrade from Blocipedia's premium
+          membership?
+        </h1>
+
+        <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
+          <button type="submit" class="btn btn-danger">
+            Downgrade your membership
+          </button>
+        </form>
+      </header>
+      <% } %> <% } %>
+    </main>
+    <% include ../static/partials/baseScripts.ejs %>
+  </body>
+</html>

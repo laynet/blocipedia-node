@@ -57,7 +57,6 @@ module.exports = {
     res.redirect("/");
   },
   upgradeForm(req, res, next) {
-    console.log("UPGRADE FORM");
-    res.render("/users/upgrade_downgrade");
+    res.render("users/upgrade_downgrade");
   }
 };
