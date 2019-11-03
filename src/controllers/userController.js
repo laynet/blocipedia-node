@@ -55,5 +55,9 @@ module.exports = {
     req.logout();
     req.flash("notice", "You've successfully signed out!");
     res.redirect("/");
+  },
+  upgradeForm(req, res, next) {
+    console.log("UPGRADE FORM");
+    res.render("/users/upgrade_downgrade");
   }
 };
