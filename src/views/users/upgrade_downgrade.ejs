@@ -18,7 +18,14 @@
           <li>Collaborate with other premium members.</li>
         </ul>
       </header>
-      <h1>stripe TODO</h1>
+
+      <btn
+        action="/users/<%=currentUser.id%>/upgrade"
+        method="POST"
+        type="submit"
+        class="btn "
+        >UPGRADE BUTTON</btn
+      >
       <% } else { %> <% if(currentUser.role === "premium"); { %>
       <header class="jumbotron my-3">
         <h1>

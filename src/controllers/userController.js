@@ -58,5 +58,10 @@ module.exports = {
   },
   upgradeForm(req, res, next) {
     res.render("users/upgrade_downgrade");
+  },
+  upgrade(req, res, next) {
+    //update model somehow?? after implementing stripe
+    res.render("users/payment_response");
+    console.log("UPGRADE RUNNING@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   }
 };
