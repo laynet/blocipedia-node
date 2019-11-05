@@ -12,7 +12,6 @@ module.exports = {
       });
   },
   getWiki(id, callback) {
-    console.log("GET WIKI RAN");
     return Wiki.findById(id)
       .then(wiki => {
         callback(null, wiki);
@@ -22,7 +21,6 @@ module.exports = {
       });
   },
   addWiki(newWiki, callback) {
-    console.log("ADD WIKI");
     return Wiki.create({
       title: newWiki.title,
       body: newWiki.body,

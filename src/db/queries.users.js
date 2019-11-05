@@ -23,6 +23,7 @@ module.exports = {
       });
   },
   upgrade(id, callback) {
+    console.log("QUERIES UPGRADE");
     return User.findById(id)
       .then(user => {
         if (!user) {

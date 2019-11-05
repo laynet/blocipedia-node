@@ -19,13 +19,20 @@
         </ul>
       </header>
 
-      <btn
-        action="/users/<%=currentUser.id%>/upgrade"
-        method="POST"
-        type="submit"
-        class="btn "
-        >UPGRADE BUTTON</btn
-      >
+      <form method="POST" action="/users/:id/upgrade">
+        <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="pk_test_sZ3yoDsebi2lBfQYxg6AOj6r00qarIvtPl"
+          data-amount="1500"
+          data-name="Stripe.com"
+          data-description="Example charge"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto"
+          data-zip-code="true"
+        ></script>
+      </form>
+
       <% } else { %> <% if(currentUser.role === "premium"); { %>
       <header class="jumbotron my-3">
         <h1>

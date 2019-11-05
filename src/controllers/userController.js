@@ -41,7 +41,6 @@ module.exports = {
 
   signIn(req, res, next) {
     passport.authenticate("local")(req, res, () => {
-      console.log("req", req.user);
       if (!req.user) {
         req.flash("notice", "Sign in failed. Please try again.");
         res.redirect("/users/sign_in");
@@ -60,8 +59,6 @@ module.exports = {
     res.render("users/upgrade_downgrade");
   },
   upgrade(req, res, next) {
-    //update model somehow?? after implementing stripe
     res.render("users/payment_response");
-    console.log("UPGRADE RUNNING@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   }
 };
