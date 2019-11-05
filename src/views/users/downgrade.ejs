@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+      <% include ../static/partials/messages.ejs %>
+
+      <header class="jumbotron my-3">
+        <h1>
+          Are you sure you want to downgrade from Blocipedia's premium
+          membership?
+        </h1>
+
+        <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
+          <button type="submit" class="btn btn-danger">
+            Downgrade your membership
+          </button>
+        </form>
+      </header>
+    </main>
+    <% include ../static/partials/baseScripts.ejs %>
+  </body>
+</html>

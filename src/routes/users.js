@@ -16,7 +16,8 @@ router.post(
   userController.signIn
 );
 router.get("/users/sign_out", userController.signOut);
-router.get("/users/upgrade_downgrade", userController.upgradeForm);
-router.post("/users/:id/upgrade", userController.upgrade);
+router.get("/users/upgrade", userController.upgrade);
+router.post("/users/upgrade", userController.success);
+router.post("/users/downgrade", userController.downgrade);
 
 module.exports = router;

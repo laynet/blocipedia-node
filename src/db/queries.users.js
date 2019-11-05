@@ -23,13 +23,23 @@ module.exports = {
       });
   },
   upgrade(id, callback) {
-    console.log("QUERIES UPGRADE");
+    console.log("USER", User.id);
+    return User.findById(id)
+      .then(user => {
+        user.update({ role: "premium" });
+        callback(null, user);
+      })
+      .catch(err => {
+        callback(err);
+      });
+  },
+  downgrade(id, callback) {
     return User.findById(id)
       .then(user => {
         if (!user) {
           return callback("User does not exist!");
         } else {
-          return user.updateAttributes({ role: "premium" });
+          return user.updateAttributes({ role: "standard" });
         }
       })
       .catch(err => {

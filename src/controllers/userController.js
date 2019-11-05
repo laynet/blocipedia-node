@@ -55,10 +55,25 @@ module.exports = {
     req.flash("notice", "You've successfully signed out!");
     res.redirect("/");
   },
-  upgradeForm(req, res, next) {
-    res.render("users/upgrade_downgrade");
-  },
+  // upgradeForm(req, res, next) {
+  //   res.render("users/upgrade");
+  // },
   upgrade(req, res, next) {
-    res.render("users/payment_response");
+    res.render("users/upgrade");
+  },
+  success(req, res, next) {
+    userQueries.upgrade(req, (err, user) => {
+      if (err) {
+        req.flash("error", err);
+        res.redirect("/users/upgrade");
+      } else {
+        req.flash("notice", "You've succesfully updated your account");
+        res.redirect("/");
+      }
+    });
+  },
+  downgrade(req, res, next) {
+    req.flash("notice", "You are no longer a premium user!");
+    res.redirect("/");
   }
 };
