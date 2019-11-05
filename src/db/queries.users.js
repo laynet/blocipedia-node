@@ -23,7 +23,7 @@ module.exports = {
       });
   },
   upgrade(id, callback) {
-    console.log("USER", User.id);
+    console.log("@@@@@@@@USER", id);
     return User.findById(id)
       .then(user => {
         user.update({ role: "premium" });

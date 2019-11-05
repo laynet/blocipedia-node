@@ -3,9 +3,9 @@ const router = express.Router();
 const validation = require("./validation");
 const userController = require("../controllers/userController");
 
-router.get("/users/sign_up", userController.signUp);
+router.get("/users/signup", userController.signUp);
 router.post(
-  "/users/sign_up",
+  "/users/signup",
   validation.validateSignUpUsers,
   userController.create
 );
@@ -17,7 +17,7 @@ router.post(
 );
 router.get("/users/sign_out", userController.signOut);
 router.get("/users/upgrade", userController.upgrade);
-router.post("/users/upgrade", userController.success);
-router.post("/users/downgrade", userController.downgrade);
+router.post("/users/:id/upgrade", userController.success);
+router.post("/users/:id/downgrade", userController.downgrade);
 
 module.exports = router;
