@@ -61,7 +61,8 @@ module.exports = {
     res.render("users/upgrade");
   },
   success(req, res, next) {
-    userQueries.upgrade(req, (err, user) => {
+    console.log("SUCCESS REQ PARAMS ID", req.params.id);
+    userQueries.upgrade(req.params.id, (err, user) => {
       if (err) {
         req.flash("error", err);
         res.redirect("/users/upgrade");
@@ -72,7 +73,9 @@ module.exports = {
     });
   },
   downgrade(req, res, next) {
-    req.flash("notice", "You are no longer a premium user!");
-    res.redirect("/");
+    userQueries.downgrade(req.params.id, user => {
+      req.flash("notice", "You are no longer a premium user!");
+      res.redirect("/");
+    });
   }
 };
