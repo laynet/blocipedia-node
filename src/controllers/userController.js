@@ -73,6 +73,7 @@ module.exports = {
     });
   },
   downgrade(req, res, next) {
+    console.log("DOWNGRADE CONTROLLER !!!!!!!!!!!!!!!!!!!");
     userQueries.downgrade(req.params.id, user => {
       req.flash("notice", "You are no longer a premium user!");
       res.redirect("/");

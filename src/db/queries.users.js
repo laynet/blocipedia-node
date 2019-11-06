@@ -34,6 +34,7 @@ module.exports = {
       });
   },
   downgrade(id, callback) {
+    console.log("DOWNGRADE QUERY @@@@@@@@@@@@@@@@@@@");
     return User.findById(id)
       .then(user => {
         if (!user) {
