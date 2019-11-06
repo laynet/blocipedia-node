@@ -1,15 +1,4 @@
-authorizer for policies wiki.js
-
-using one to many association
-
-* add authorizer to new in wikicontroller
-
-
-after editing is redirecting to ```Not Found. Redirecting to /wikis/4/edit```
-
-ADD AUTHORIZER TO EVERYTHING
-
-signing out from anywhere other than index gives you Cannot GET /wikis/users/sign_out
+*downgrade is not switching back to upgrade in navbar 
 
 *should be able to view wikis from index page without signing in
 
