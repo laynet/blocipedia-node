@@ -1,6 +1,16 @@
 *downgrade is not switching back to upgrade in navbar 
+can't create new wiki or edit or delete after upgrading account
+
+-- after signing up with a new user and then upgrading, i was able to downgrade successfully but was redirected 
+to sign in
+* HOW To check user role
+
+
 
 *should be able to view wikis from index page without signing in
+
+can't upgrade after downgrading in navbar
+wiki index is all fucked up
 
 
 DB FIX

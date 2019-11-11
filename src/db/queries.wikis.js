@@ -11,6 +11,17 @@ module.exports = {
         callback(err);
       });
   },
+  getAllPrivateWikis(callback) {
+    return Wiki.findAll({
+      where: { private: true }
+    })
+      .then(wikis => {
+        callback(null, wikis);
+      })
+      .catch(err => {
+        callback(err);
+      });
+  },
   getWiki(id, callback) {
     return Wiki.findById(id)
       .then(wiki => {

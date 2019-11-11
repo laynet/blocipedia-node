@@ -29,7 +29,7 @@ module.exports = class ApplicationPolicy {
     return (
       this.new() &&
       this.record &&
-      (this._isOwner() || this._isAdmin() || this._isPremium())
+      (this._isOwner() || this._isStandard() || this._isPremium())
     );
   }
   update() {

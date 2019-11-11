@@ -54,7 +54,7 @@ module.exports = {
   destroy(req, res, next) {
     wikiQueries.deleteWiki(req, (err, wiki) => {
       if (err) {
-        res.redirect(500, `/wikis/${wiki.id}`);
+        res.redirect(500, `/wikis/${wiki.params.id}`);
       } else {
         res.redirect(303, "/wikis/index");
       }
@@ -81,6 +81,15 @@ module.exports = {
         res.redirect(401, `/wikis/${req.params.id}/edit`);
       } else {
         res.redirect(`/wikis/${req.params.id}`);
+      }
+    });
+  },
+  privateIndex(req, res, next) {
+    wikiQueries.getAllPrivateWikis((err, wikis) => {
+      if (err) {
+        res.redirect(500, "static/index");
+      } else {
+        res.render("Wikis/private", { wikis });
       }
     });
   }
