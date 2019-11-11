@@ -34,14 +34,12 @@ module.exports = {
       });
   },
   downgrade(id, callback) {
-    console.log("DOWNGRADE QUERY @@@@@@@@@@@@@@@@@@@");
+    console.log("DOWNGRADE QUERY @@@@@@@@@@@@@@@@@@@", id);
     return User.findById(id)
       .then(user => {
-        if (!user) {
-          return callback("User does not exist!");
-        } else {
-          return user.updateAttributes({ role: "standard" });
-        }
+        console.log("QUERY USER", user);
+        user.update({ role: "standard" });
+        callback(req.user.id, user);
       })
       .catch(err => {
         callback(err);

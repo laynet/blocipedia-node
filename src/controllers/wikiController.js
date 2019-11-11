@@ -54,7 +54,7 @@ module.exports = {
   destroy(req, res, next) {
     wikiQueries.deleteWiki(req, (err, wiki) => {
       if (err) {
-        res.redirect(500, `/wikis/${wiki.params.id}`);
+        res.redirect(500, `/wikis/${wiki.id}`);
       } else {
         res.redirect(303, "/wikis/index");
       }
