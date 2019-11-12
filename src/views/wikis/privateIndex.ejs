@@ -4,13 +4,13 @@
     <% include ../static/partials/head.ejs %>
   </head>
   <body>
+    <% include ../static/partials/navbar.ejs %>
     <main class="container">
-      <% include ../static/partials/navbar.ejs %> <% include
-      ../static/partials/messages.ejs %>
+      <% include ../static/partials/messages.ejs %>
 
       <h1>Private Wikis</h1>
-      <% if(currentUser && currentUser.role === "premium") { %>
-      <a href="/wikis/new" class="btn btn-success">New Wikis</a>
+      <% if(currentUser) { %>
+      <a href="/wikis/new" class="btn btn-success">New Wiki</a>
       <% } %>
 
       <ul class="list-group">

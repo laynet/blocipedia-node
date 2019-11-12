@@ -7,7 +7,7 @@
     <main class="container">
       <% include ../static/partials/navbar.ejs %>
 
-      <h1>New Wikis</h1>
+      <h1>New Wiki</h1>
 
       <form method="POST" action="/wikis/create">
         <div class="form-group">
@@ -30,7 +30,15 @@
           >Body must be at least 10 characters in length.</small
         >
     </div>
-          
+          <% if(currentUser.role !== "standard"){ %>
+            <div class="form=group">
+                <label for="private">Would you like to make this wiki private?</label>
+                <select class="form-control" name="private">
+                    <option value="false">Public</option>
+                    <option value="true">Private</option>
+                </select>
+            </div>
+            <% } %>
         <button type="submit" class="btn btn-primary" />Submit</button>
       </form>
     </main>

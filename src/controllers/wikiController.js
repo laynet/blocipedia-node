@@ -2,12 +2,21 @@ const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/wiki");
 
 module.exports = {
-  index(req, res, next) {
+  publicIndex(req, res, next) {
     wikiQueries.getAllWikis((err, wikis) => {
       if (err) {
         res.redirect(500, "static/index");
       } else {
-        res.render("wikis/index", { wikis });
+        res.render("wikis/publicIndex", { wikis });
+      }
+    });
+  },
+  privateIndex(req, res, next) {
+    wikiQueries.getAllPrivateWikis((err, wikis) => {
+      if (err) {
+        res.redirect(500, "static/index");
+      } else {
+        res.render("Wikis/privateIndex", { wikis });
       }
     });
   },
@@ -81,15 +90,6 @@ module.exports = {
         res.redirect(401, `/wikis/${req.params.id}/edit`);
       } else {
         res.redirect(`/wikis/${req.params.id}`);
-      }
-    });
-  },
-  privateIndex(req, res, next) {
-    wikiQueries.getAllPrivateWikis((err, wikis) => {
-      if (err) {
-        res.redirect(500, "static/index");
-      } else {
-        res.render("Wikis/private", { wikis });
       }
     });
   }

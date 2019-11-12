@@ -39,7 +39,7 @@ module.exports = {
       .then(user => {
         console.log("QUERY USER", user);
         user.update({ role: "standard" });
-        callback(req.user.id, user);
+        callback(user);
       })
       .catch(err => {
         callback(err);
