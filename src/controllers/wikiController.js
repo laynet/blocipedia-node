@@ -69,7 +69,7 @@ module.exports = {
         res.redirect(500, `/wikis/${wikis.id}`);
         console.log("WCD wiki.id", wiki.id);
       } else {
-        res.redirect(303).redirect("/wikis");
+        res.status(303).redirect("/wikis/public");
       }
     });
   },
