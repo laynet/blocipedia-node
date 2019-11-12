@@ -2,7 +2,7 @@ const Wiki = require("./models").Wiki;
 const Authorizer = require("../policies/wiki");
 
 module.exports = {
-  getAllWikis(callback) {
+  getAllPublicWikis(callback) {
     return Wiki.findAll()
       .then(wikis => {
         callback(null, wikis);

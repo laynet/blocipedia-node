@@ -1,8 +1,6 @@
-*downgrade is not switching back to upgrade in navbar 
-can't create new wiki or edit or delete after upgrading account
+private wikis are showing up on publi wiki index
+public and private wikis are deleting but not re-routing after deletion
 
--- after signing up with a new user and then upgrading, i was able to downgrade successfully but was redirected 
-to sign in
 * HOW To check user role
 
 
