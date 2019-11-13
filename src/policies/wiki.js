@@ -8,7 +8,13 @@ module.exports = class WikiPolicy extends ApplicationPolicy {
     return this.new();
   }
   edit() {
-    return this._isStandard() || this._isPremium();
+    if (this.record.private == false) {
+      return this._hasUser();
+    } else if (this.record.private == true) {
+      return (
+        this.new() && this.record && (this._isAdmin() || this._isPremium())
+      );
+    }
   }
   update() {
     return this.edit();

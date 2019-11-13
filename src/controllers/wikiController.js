@@ -64,12 +64,11 @@ module.exports = {
     console.log("wikiController destroy ran");
     wikiQueries.deleteWiki(req, (err, wiki) => {
       console.log("WCD REQ", req.body);
+      console.log("ERROR", err);
       if (err) {
-        console.log("ERROR", err);
-        res.redirect(500, `/wikis/${wikis.id}`);
-        console.log("WCD wiki.id", wiki.id);
+        res.redirect(500, `/wikis`);
       } else {
-        res.status(303).redirect("/wikis/public");
+        res.status(303).redirect("/wikis");
       }
     });
   },

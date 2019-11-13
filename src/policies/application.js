@@ -3,7 +3,9 @@ module.exports = class ApplicationPolicy {
     this.user = user;
     this.record = record;
   }
-
+  _hasUser() {
+    return this.user != null;
+  }
   _isStandard() {
     return this.user && this.user.role == "standard";
   }

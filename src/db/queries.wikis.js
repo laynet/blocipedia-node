@@ -46,7 +46,7 @@ module.exports = {
       });
   },
 
-  deleteWiki(req, callback) {
+  deleteWiki(req, res, callback) {
     return Wiki.findById(req.params.id)
 
       .then(wiki => {
@@ -57,7 +57,7 @@ module.exports = {
           });
         } else {
           req.flash("notice", "You are not authorized to do that.");
-          callback(401);
+          res.redirect(`/wikis/${req.params.id}`);
         }
       })
       .catch(err => {
