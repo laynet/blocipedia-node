@@ -1,5 +1,5 @@
 const wikiQueries = require("../db/queries.wikis.js");
-const Authorizer = require("../policies/wiki");
+const Authorizer = require("../policies/application");
 
 module.exports = {
   publicIndex(req, res, next) {
@@ -78,7 +78,7 @@ module.exports = {
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {
-        const authorized = new Authorizer(req.user).edit();
+        const authorized = new Authorizer(req.user, wiki).edit();
         if (authorized) {
           res.render("wikis/edit", { wiki });
         } else {

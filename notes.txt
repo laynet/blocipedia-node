@@ -1,9 +1,10 @@
-private wikis are showing up on publi wiki index
-public and private wikis are deleting but not re-routing after deletion
+private wikis are available view, edit and delete to standard users
+non logged-in users can't see public wikis
 
 * HOW To check user role
 
-
+PREMIUM laynerz@laynerz.com 123456
+STANDARD taylor@taylor.com 123456
 
 *should be able to view wikis from index page without signing in
 

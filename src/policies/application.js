@@ -26,11 +26,19 @@ module.exports = class ApplicationPolicy {
     return true;
   }
   edit() {
-    return (
-      this.new() &&
-      this.record &&
-      (this._isOwner() || this._isStandard() || this._isPremium())
-    );
+    if (this.record.private == false) {
+      return (
+        this.new() &&
+        this.record &&
+        (this._isStandard() || this._isAdmin() || this._isPremium())
+      );
+    } else if (this.record.private == true) {
+      return (
+        this.new() &&
+        this.record &&
+        (this._isStandard() || this._isAdmin() || this._isPremium())
+      );
+    }
   }
   update() {
     return this.edit();
