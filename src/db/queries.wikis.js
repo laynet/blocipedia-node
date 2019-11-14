@@ -46,8 +46,8 @@ module.exports = {
       });
   },
 
-  deleteWiki(req, res, callback) {
-    console.log("here is the res at the top of delete wiki: ", res);
+  deleteWiki(req, callback) {
+    console.log("req params id: ", req.params.id);
 
     return Wiki.findById(req.params.id)
 
@@ -59,7 +59,8 @@ module.exports = {
           });
         } else {
           req.flash("notice", "You are not authorized to do that.");
-          res.redirect(`/wikis/${req.params.id}`);
+          //   res.redirect(`/wikis/${req.params.id}`);
+          callback(401);
         }
       })
       .catch(err => {
