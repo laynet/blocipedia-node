@@ -47,6 +47,8 @@ module.exports = {
   },
 
   deleteWiki(req, res, callback) {
+    console.log("here is the res at the top of delete wiki: ", res);
+
     return Wiki.findById(req.params.id)
 
       .then(wiki => {
@@ -61,7 +63,7 @@ module.exports = {
         }
       })
       .catch(err => {
-        callback(err);
+        console.log("error in delete wiki:", err);
       });
   },
   updateWiki(req, updatedWiki, callback) {
