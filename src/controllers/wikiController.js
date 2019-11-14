@@ -61,14 +61,11 @@ module.exports = {
     });
   },
   destroy(req, res, next) {
-    console.log("wikiController destroy ran");
     wikiQueries.deleteWiki(req, (err, wiki) => {
-      console.log("WCD REQ", req.body);
-      console.log("ERROR", err);
       if (err) {
-        res.redirect(500, `/wikis`);
+        res.redirect(500, `/wikis/${req.params.id}`);
       } else {
-        res.status(303).redirect("/wikis");
+        res.redirect(303, "/wikis");
       }
     });
   },

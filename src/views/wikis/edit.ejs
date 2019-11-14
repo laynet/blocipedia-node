@@ -33,6 +33,15 @@
 <%= wiki.body %></textarea
           >
         </div>
+        <% if(currentUser.role !== "standard"){ %>
+        <div class="form=group">
+          <label for="private">Would you like to make this wiki private?</label>
+          <select class="form-control" name="private">
+            <option value="false">Public</option>
+            <option value="true">Private</option>
+          </select>
+        </div>
+        <% } %>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </main>

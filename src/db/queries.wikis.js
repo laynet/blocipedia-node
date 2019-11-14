@@ -47,19 +47,18 @@ module.exports = {
   },
 
   deleteWiki(req, callback) {
-    console.log("req params id: ", req.params.id);
-
     return Wiki.findById(req.params.id)
 
       .then(wiki => {
         const authorized = new Authorizer(req.user, wiki).destroy();
+
         if (authorized) {
           wiki.destroy().then(res => {
             callback(null, wiki);
           });
         } else {
           req.flash("notice", "You are not authorized to do that.");
-          //   res.redirect(`/wikis/${req.params.id}`);
+
           callback(401);
         }
       })
