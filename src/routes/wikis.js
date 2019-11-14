@@ -3,7 +3,7 @@ const router = express.Router();
 
 const wikiController = require("../controllers/wikiController");
 
-router.get("/wikis/public", wikiController.index);
+router.get("/wikis/index", wikiController.index);
 router.get("/wikis/private", wikiController.private);
 router.get("/wikis/new", wikiController.new);
 router.get("/wikis/:id", wikiController.show);
