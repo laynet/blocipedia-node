@@ -1,6 +1,7 @@
-standard users can't delete wikis but it's not re-directing or showing flash
-premium users can delete but are not re-directed either, says cannot GET wikis, but is deleted from the index 
+
 UPGRADE is still showing in the navbar after upgrading, but goes away after hitting home button, same with downgrade
+
+weird little dead space in index after adding a private wiki - not important right now but bugging the shit out of me
 non logged-in users can't see public wikis
 
 * HOW To check user role
