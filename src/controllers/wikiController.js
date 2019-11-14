@@ -65,7 +65,7 @@ module.exports = {
       if (err) {
         res.redirect(500, `/wikis/${req.params.id}`);
       } else {
-        res.redirect(303, "/wikis");
+        res.redirect(303, "/wikis/public");
       }
     });
   },
