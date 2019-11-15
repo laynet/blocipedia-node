@@ -81,7 +81,7 @@ module.exports = {
         req.flash("error", err);
         res.redirect("/users/downgrade");
       } else {
-        req.flash("notice", "You are no longer a premium user");
+        req.flash("error", "You are no longer a premium user");
         res.redirect("/");
       }
     });
