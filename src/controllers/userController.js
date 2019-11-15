@@ -75,7 +75,7 @@ module.exports = {
   downgrade(req, res, next) {
     // userQueries.downgrade(req.user.id, user => {
     //   req.flash("notice", "You are no longer a premium user!");
-    res.render("/users/downgrade");
+    res.render("users/downgrade");
     // });
   }
 };
