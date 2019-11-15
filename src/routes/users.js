@@ -21,5 +21,7 @@ router.get("/users/upgrade", userController.upgrade);
 router.post("/users/:id/upgrade", userController.success);
 router.post("/users/downgrade", userController.downgrade);
 router.get("/users/downgrade", userController.downgrade);
+router.get("/users/confirm_downgrade", userController.confirmDowngrade);
+router.post("/users/:id/confirm_downgrade", userController.confirmDowngrade);
 
 module.exports = router;

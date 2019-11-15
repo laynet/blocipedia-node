@@ -73,9 +73,17 @@ module.exports = {
     });
   },
   downgrade(req, res, next) {
-    // userQueries.downgrade(req.user.id, user => {
-    //   req.flash("notice", "You are no longer a premium user!");
     res.render("users/downgrade");
-    // });
+  },
+  confirmDowngrade(req, res, next) {
+    userQueries.downgrade(req, (err, user) => {
+      if (err) {
+        req.flash("error", err);
+        res.redirect("/users/downgrade");
+      } else {
+        req.flash("notice", "You are no longer a premium user");
+        res.redirect("/");
+      }
+    });
   }
 };

@@ -15,7 +15,10 @@
           membership?
         </h1>
 
-        <form action="/users/<%=currentUser.id%>/downgrade" method="POST">
+        <form
+          action="/users/<%=currentUser.id%>/confirm_downgrade"
+          method="POST"
+        >
           <button type="submit" class="btn btn-danger">
             Downgrade your membership
           </button>
