@@ -1,4 +1,5 @@
 const userQueries = require("../db/queries.users.js");
+const wikiQueries = require("../db/queries.wikis.js");
 const passport = require("passport");
 const sgMail = require("@sendgrid/mail");
 
@@ -76,12 +77,13 @@ module.exports = {
     res.render("users/downgrade");
   },
   confirmDowngrade(req, res, next) {
+    wikiQueries.privateToPublic(req.user.id);
     userQueries.downgrade(req, (err, user) => {
       if (err) {
         req.flash("error", err);
         res.redirect("/users/downgrade");
       } else {
-        req.flash("error", "You are no longer a premium user");
+        req.flash("notice", "You are no longer a premium user");
         res.redirect("/");
       }
     });

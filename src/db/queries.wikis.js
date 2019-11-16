@@ -88,5 +88,20 @@ module.exports = {
         callback("Forbidden");
       }
     });
+  },
+  privateToPublic(id) {
+    return Wiki.findAll()
+      .then(wikis => {
+        wikis.forEach(wiki => {
+          if (wiki.userId == id && wiki.private == true) {
+            wiki.update({ private: false }).then(() => {
+              console.log("wiki downgraded");
+            });
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
