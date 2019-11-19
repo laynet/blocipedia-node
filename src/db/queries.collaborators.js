@@ -3,6 +3,6 @@ const Wiki = require("./models").Wiki;
 const Collaborator = require("./models").Collaborators;
 const Authorizer = require("../policies/application");
 
-// module.exports = {
-//   add(req, callback) {}
-// };
+module.exports = {
+  add(req, callback) {}
+};

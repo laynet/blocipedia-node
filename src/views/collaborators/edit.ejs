@@ -8,8 +8,15 @@
 
     <main class="container">
       <% include ../static/partials/messages.ejs %>
-
+      <ul>
+        <li>sajdhbvajlhsdbvlajdsb</li>
+      </ul>
+      <% if(wiki.private == true){ %>
       <h2>Collaborators</h2>
+      %> } else { %>
+      <h2>NOT PRIVATE</h2>
+
+      <% } %>
     </main>
   </body>
 </html>

@@ -8,5 +8,5 @@ module.exports = {
   add(req, res, next) {
     res.render("collaborators/edit");
   },
-  edit() {}
+  edit(req, res, next) {}
 };
