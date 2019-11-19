@@ -6,7 +6,7 @@ const Authorizer = require("../policies/application");
 
 module.exports = {
   add(req, res, next) {
-    res.render("collaborators/edit");
+    res.render("collaborators/edit", { wikiQueries });
   },
   edit(req, res, next) {}
 };

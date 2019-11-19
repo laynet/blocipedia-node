@@ -7,11 +7,8 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <% include ../static/partials/messages.ejs %>
-      <ul>
-        <li>sajdhbvajlhsdbvlajdsb</li>
-      </ul>
-      <% if(wiki.private == true){ %>
+      <% include ../static/partials/messages.ejs %> <% if(wikiQueries.private ==
+      true){ %>
       <h2>Collaborators</h2>
       %> } else { %>
       <h2>NOT PRIVATE</h2>
