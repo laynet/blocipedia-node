@@ -7,13 +7,10 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <% include ../static/partials/messages.ejs %> <% if(wikis.private ==
-      true){ %>
+      <% include ../static/partials/messages.ejs %>
       <h2>Collaborators</h2>
-      %> } else { %>
-      <h2>NOT PRIVATE</h2>
 
-      <% } %>
+      <h2>NOT PRIVATE</h2>
     </main>
   </body>
 </html>
