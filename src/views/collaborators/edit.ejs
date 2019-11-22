@@ -7,10 +7,11 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <% include ../static/partials/messages.ejs %>
+      <% include ../static/partials/messages.ejs %> <% if(wiki.private == true)
+      { %>
       <h2>Collaborators</h2>
-
-      <h2>NOT PRIVATE</h2>
+      <% } %>
+      <h2>collaborators - private logic isn't working</h2>
 
       <% if(currentUser && (currentUser.role === "premium" || currentUser.role
       === "admin")) { %>
