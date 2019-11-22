@@ -10,6 +10,12 @@
       <h1><%= wiki.title %></h1>
       <% if(currentUser) { %>
       <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
+      <% if(currentUser && (currentUser.id == wiki.userId || currentUSer.role
+      === "admin")) { %>
+      <a href="/wikis/<%= wiki.id %>/collaborators" class="btn btn-info"
+        >Collaborators</a
+      >
+      <%}%>
       <form
         style="display:initial"
         action="/wikis/<%= wiki.id %>/destroy"

@@ -6,17 +6,20 @@ const Authorizer = require("../policies/application");
 
 module.exports = {
   add(req, res, next) {
-    // res.render("collaborators/edit");
-    // collaboratorQueries.add(req, (err, collaborator) => {
-    //   if (err) {
-    //     console.log(err);
-    //     req.flash("message", err);
-    //   }
-    //   res.redirect(req.headers.referer);
-    // });
+    collaboratorQueries.add(req, (err, collaborator) => {
+      if (err) {
+        console.log(err);
+        req.flash("message", err);
+      }
+      res.redirect(req.headers.referer);
+    });
   },
   edit(req, res, next) {
-    const wiki = wikiQueries.getWiki(req.params.id);
+    const wiki = wikiQueries.getWiki(req.params.id, (err, wiki) => {
+      if (err) {
+        console.log("Error", err);
+      }
+    });
     res.render("collaborators/edit", { wiki });
   }
 };
