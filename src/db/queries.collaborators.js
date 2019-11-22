@@ -13,6 +13,16 @@ module.exports = {
       where: {
         username: req.body.collaborator
       }
+    }).then(users => {
+      if (!users[0]) {
+        return callback("User not found.");
+      }
+      Collaborator.findAll({
+        where: {
+          userId: users[0].id,
+          wikiId: req.params.wikiId
+        }
+      });
     });
   }
 };

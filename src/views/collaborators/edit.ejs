@@ -7,10 +7,21 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <% include ../static/partials/messages.ejs %> <% if(wiki.private == true)
-      { %>
+    
       <h2>Collaborators</h2>
-      <% } %>
+      <% if(collaborators) { %> 
+        <p>
+            <ul class="list-group">
+                <% collaborators.forEach((collaborator) => { %> 
+                    <li class="list-group-item">
+                        <%= collaborator.username %>
+                        
+                    </li>
+                    <% }) %>
+            </ul>
+        </p>
+        <% } %>
+     
       <h2>collaborators - private logic isn't working</h2>
 
       <% if(currentUser && (currentUser.role === "premium" || currentUser.role
