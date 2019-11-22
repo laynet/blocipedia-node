@@ -15,26 +15,11 @@ module.exports = {
     });
   },
   edit(req, res, next) {
-    wikiQueries.getWiki(req.params.wikiId, (err, result) => {
-      wiki = result["wiki"];
-      collaborators = result["collaborators"];
-      if (err || wiki == null) {
-        res.redirect(404, "/");
-      } else {
-        const authorized = new Authorizer(req.user, wiki, collaborators).edit();
-        if (authorized) {
-          res.render("collaborators/edit", { wiki, collaborators });
-        } else {
-          req.flash("You are not authorized to do that.");
-          res.redirect(`/wikis/${req.params.wikiId}`);
-        }
+    const wiki = wikiQueries.getWiki(req.params.id, (err, wiki) => {
+      if (err) {
+        console.log("Error", err);
       }
     });
-    // const wiki = wikiQueries.getWiki(req.params.id, (err, wiki) => {
-    //   if (err) {
-    //     console.log("Error", err);
-    //   }
-    // });
-    // res.render("collaborators/edit", { wiki });
+    res.render("collaborators/edit", { wiki });
   }
 };
