@@ -15,6 +15,7 @@ module.exports = {
     });
   },
   edit(req, res, next) {
+    console.log("COLLAB GET WIKI ", req.params);
     wikiQueries.getWiki(req.params.id, (err, wiki) => {
       if (err) {
         console.log("Error", err);
