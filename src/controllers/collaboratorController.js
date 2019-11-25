@@ -15,11 +15,11 @@ module.exports = {
     });
   },
   edit(req, res, next) {
-    const wiki = wikiQueries.getWiki(req.params.id, (err, wiki) => {
+    wikiQueries.getWiki(req.params.id, (err, wiki) => {
       if (err) {
         console.log("Error", err);
+        res.render("collaborators/edit", { wiki });
       }
     });
-    res.render("collaborators/edit", { wiki });
   }
 };
