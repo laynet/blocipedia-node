@@ -11,16 +11,19 @@ module.exports = {
         console.log(err);
         req.flash("message", err);
       }
+
       res.redirect(req.headers.referer);
     });
   },
   edit(req, res, next) {
-    console.log("COLLAB GET WIKI ", req.params);
-    wikiQueries.getWiki(req.params.id, (err, wiki) => {
+    console.log("COLLAB GET WIKI &&&&& RESULT ", result);
+    wikiQueries.getWiki(req.params.id, (err, result) => {
+      wiki = result["wiki"];
+      collaborators = result["collaborators"];
       if (err) {
         console.log("Error", err);
       }
-      res.render("collaborators/edit", { wiki });
+      res.render("collaborators/edit", { wiki, collaborators });
     });
   }
 };

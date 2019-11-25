@@ -20,7 +20,7 @@ module.exports = {
       Collaborator.findAll({
         where: {
           userId: users[0].id,
-          wikiId: req.params.wikiId
+          wikiId: req.params.id
         }
       });
     });
