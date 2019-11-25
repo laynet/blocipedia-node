@@ -38,3 +38,6 @@ postgres=# exit
 
 
  *****add collaborators to wiki edit page
+
+  <% include ../static/partials/messages.ejs %> <% if(wiki.private == true)
+      { %>
