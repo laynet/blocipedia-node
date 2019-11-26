@@ -7,9 +7,10 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
+      <% if(wiki.private == true) { %>
       <h2>Collaborators</h2>
 
-      <h2>collaborators - private logic isn't working</h2>
+      <% } %>
 
       <form action="/wikis/<%= wiki.id%>/collaborators/add" method="POST">
         <div class="input-group">
