@@ -9,9 +9,7 @@
     <main class="container">
       <% if(wiki.private == true) { %>
       <h2>Collaborators</h2>
-
-      <% } %>
-
+      <% if(collaborator) } %> <% } %>
       <form action="/wikis/<%= wiki.id%>/collaborators/add" method="POST">
         <div class="input-group">
           <input
@@ -23,6 +21,7 @@
           <button type="submit" class="btn btn-primary">Add</button>
         </div>
       </form>
+      <% } %>
     </main>
   </body>
 </html>
