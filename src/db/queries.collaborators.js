@@ -5,7 +5,6 @@ const Authorizer = require("../policies/application");
 
 module.exports = {
   add(req, callback) {
-    console.log("QUERIES COLLAB ADD RAN");
     console.log("COLLAB QUERIES REQ USER ", req);
     if (req.user.username === req.body.collaborator) {
       return callback("You cannot add yourself to collaborators!");

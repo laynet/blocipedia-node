@@ -39,7 +39,6 @@ describe("Wiki", () => {
           done();
         })
         .catch(err => {
-          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@CREATE ERROR :".err);
           expect(err).toBeNull();
           console.log(err);
           done();

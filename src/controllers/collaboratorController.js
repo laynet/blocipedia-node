@@ -6,7 +6,7 @@ const Authorizer = require("../policies/application");
 
 module.exports = {
   add(req, res, next) {
-    console.log("^^^^COLLAB ADD REQ ", req.user);
+    console.log("@@@@@@@@@@@COLLAB ADD RAN - REQ.user ", req.user);
     collaboratorQueries.add(req, (err, collaborator) => {
       if (err) {
         console.log(err);
@@ -16,7 +16,7 @@ module.exports = {
     });
   },
   edit(req, res, next) {
-    wikiQueries.getWiki(req.params.id, (err, wiki) => {
+    wikiQueries.getWiki(req.params.wikiId, (err, wiki) => {
       if (err) {
         console.log("Error", err);
       }

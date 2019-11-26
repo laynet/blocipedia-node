@@ -9,17 +9,17 @@
     <main class="container">
       <% if(wiki.private == true) { %>
       <h2>Collaborators</h2>
-      <% if(collaborators) { %>
+     
         <p>
         <ul class ="list-group">
-          <% collaborators.forEach((collaborator) => {  %>
+        
               <li class="list-group-item">
-                    <%= collaborator.User.username %>
+               
                 </li>
-                <% }) %>
+             
               </ul>
             </p>
-            <% } %>
+           
       <form action="/wikis/<%= wiki.id%>/collaborators/add" method="POST">
         <div class="input-group">
           <input

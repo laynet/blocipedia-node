@@ -19,7 +19,7 @@ module.exports = {
       password: req.body.password,
       passwordConfirmation: req.body.passwordConfirmation
     };
-    console.log("NEW USER", newUser);
+
     userQueries.createUser(newUser, (err, user) => {
       if (err) {
         req.flash("error", err);
@@ -62,7 +62,6 @@ module.exports = {
     res.render("users/upgrade");
   },
   success(req, res, next) {
-    console.log("SUCCESS REQ PARAMS ID", req.params.id);
     userQueries.upgrade(req.params.id, (err, user) => {
       if (err) {
         req.flash("error", err);
