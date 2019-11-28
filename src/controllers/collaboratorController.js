@@ -17,11 +17,8 @@ module.exports = {
   },
   edit(req, res, next) {
     console.log("++++++++++++++REQ ", req.params.wikiId);
-    wikiQueries.getWiki(req.params.wikiId, (err, result) => {
-      wiki = result["wiki"];
-      console.log("=============== WIKI ", wiki);
-      collaborators = result["collaborators"];
-      console.log("+++++++++++ERROR & WIKI", err, wiki);
+    wikiQueries.getWiki(req.params.wikiId, (err, wiki) => {
+      const collaborators = wiki.collaborators;
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {

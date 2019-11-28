@@ -1,6 +1,7 @@
 const Wiki = require("./models").Wiki;
 const Authorizer = require("../policies/wiki");
 const Collaborators = require("./models").Collaborators;
+const User = require("./models").User;
 
 module.exports = {
   getAllPublicWikis(callback) {
@@ -24,15 +25,40 @@ module.exports = {
       });
   },
   getWiki(id, callback) {
-    console.log("GET WIKI RANNNNNNNNNNNN, id", id);
-    return Wiki.findById(id)
+    return Wiki.findOne({
+      where: {
+        id: id
+      },
+      include: [
+        {
+          model: Collaborators,
+          as: "collaborators",
+          include: [
+            {
+              model: Wiki,
+              as: "wiki,"
+            },
+            {
+              model: User,
+              as: "user"
+            }
+          ]
+        }
+      ]
+    })
       .then(wiki => {
-        console.log("!!!!!callback null ", wiki);
         callback(null, wiki);
       })
-      .catch(err => {
-        callback(err);
-      });
+      .catch(err => callback(err));
+    // console.log("GET WIKI RANNNNNNNNNNNN, id", id);
+    // return Wiki.findById(id)
+    //   .then(wiki => {
+    //     console.log("!!!!!callback null ", wiki);
+    //     callback(null, wiki);
+    //   })
+    //   .catch(err => {
+    //     callback(err);
+    //   });
 
     // var result = {};
     // return Wiki.findById(id).then(wiki => {
