@@ -1,5 +1,8 @@
 
 UPGRADE is still showing in the navbar after upgrading, but goes away after hitting home button, same with downgrade
+not getting a flash when non-owner tried to edit wiki
+standard users can't view wikis
+can delete wikis that aren't mine
 
 weird little dead space in index after adding a private wiki - not important right now but bugging the shit out of me
 non logged-in users can't see public wikis
@@ -33,7 +36,3 @@ psql -U postgres (!to get into postgres)
 
 
 
- *****add collaborators to wiki edit page
-
-  <% include ../static/partials/messages.ejs %> <% if(wiki.private == true)
-      { %>

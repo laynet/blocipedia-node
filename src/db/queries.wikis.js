@@ -36,7 +36,7 @@ module.exports = {
           include: [
             {
               model: Wiki,
-              as: "wiki,"
+              as: "wiki"
             },
             {
               model: User,
