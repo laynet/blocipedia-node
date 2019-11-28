@@ -1,16 +1,18 @@
 
+standard collaborator can't see private wiki in index
+admin can't edit wikis
+premium users can't add collaborators
 UPGRADE is still showing in the navbar after upgrading, but goes away after hitting home button, same with downgrade
 not getting a flash when non-owner tried to edit wiki
 standard users can't view wikis
 can delete wikis that aren't mine
-
 weird little dead space in index after adding a private wiki - not important right now but bugging the shit out of me
 non logged-in users can't see public wikis
 
 * HOW To check user role
-
-PREMIUM laynerz@laynerz.com 123456
-STANDARD taylor@taylor.com 123456
+ADMIN layneingramtaylor@gmail.com 123456 Layne
+PREMIUM laynerz@laynerz.com 123456 laynerz
+STANDARD taylor@taylor.com 123456 taylor
 
 *should be able to view wikis from index page without signing in
 
@@ -27,6 +29,9 @@ psql -U postgres (!to get into postgres)
 \c to connect to a db - ***blocipedia-dev***
 \dt to list table names
 *************************************************************
+
+updating user roles
+blocipedia-dev=# UPDATE "Users" SET role = 'admin' WHERE id = 1;
 
 
 
