@@ -5,6 +5,7 @@ const markdown = require("markdown").markdown;
 module.exports = {
   index(req, res, next) {
     wikiQueries.getAllPublicWikis((err, wikis) => {
+      console.log("+++++++++++PUBLIC WIKIS ", wikis);
       if (err) {
         res.redirect(500, "static/index");
       } else {
