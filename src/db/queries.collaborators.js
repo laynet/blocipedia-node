@@ -50,12 +50,13 @@ module.exports = {
         callback(err, null);
       });
   },
-  getCollaborator(req, callback) {
+  getCollaborator(id, callback) {
     Collaborator.findAll({
       where: {
-        userId: req.user.id
+        userId: id
       }
     }).catch(err => {
+      console.log("##############ERROR ", err);
       callback(err, null);
     });
   }
