@@ -1,7 +1,8 @@
 
 standard collaborator can't see private wiki in index
-admin can't edit wikis
-premium users can't add collaborators
+should premium only be able to edit and add collaborators for their own wikis?
+
+***OTHER PROBLEMS****
 UPGRADE is still showing in the navbar after upgrading, but goes away after hitting home button, same with downgrade
 not getting a flash when non-owner tried to edit wiki
 standard users can't view wikis
@@ -32,6 +33,49 @@ psql -U postgres (!to get into postgres)
 
 updating user roles
 blocipedia-dev=# UPDATE "Users" SET role = 'admin' WHERE id = 1;
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^^wiki index
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <main class="container">
+      <% include ../static/partials/navbar.ejs %> <% include
+      ../static/partials/messages.ejs %>
+      <h1>Wikis</h1>
+
+      <a href="/wikis/new" class="btn btn-success">New Wiki</a>
+      <% if(currentUser.role == "premium" || currentUser.role == "admin" ||
+      currentUser.role == "collaborator") { %>
+      <a href="/wikis/private" class="btn btn-success">Private Wikis</a>
+      <% } %>
+      <ul class="list-group">
+        <!-- #1 -->
+        <% wikis.forEach((wiki) => { %>
+        <!-- #2 -->
+        <li class="list-group-item">
+          <% if(wiki.private === false) { %>
+          <a href="/wikis/<%= wiki.id %>"> <%= wiki.title %> </a>
+        </li>
+        <% } %> <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>
+
+*SNIP SNIP*
+ <% if(currentUser.role == "premium" || currentUser.role == "admin" ||
+      currentUser.role == "collaborator") { %>
+      <a href="/wikis/private" class="btn btn-success">Private Wikis</a>
+      <% } %>
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 

@@ -49,5 +49,14 @@ module.exports = {
       .catch(err => {
         callback(err, null);
       });
+  },
+  getCollaborator(req, callback) {
+    Collaborator.findAll({
+      where: {
+        userId: req.user.id
+      }
+    }).catch(err => {
+      callback(err, null);
+    });
   }
 };

@@ -1,27 +1,68 @@
 const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/wiki");
+const collaboratorQueries = require("../db/queries.collaborators.js");
 const markdown = require("markdown").markdown;
 
 module.exports = {
   index(req, res, next) {
-    wikiQueries.getAllPublicWikis((err, wikis) => {
-      console.log("+++++++++++PUBLIC WIKIS ", wikis);
+    collaboratorQueries.getCollaborator(req, (err, collaborators) => {
       if (err) {
         res.redirect(500, "static/index");
-      } else {
+      }
+      wikiQueries.getAllWikis((err, allWikis) => {
+        if (err) {
+          res.redirect(500, "static/index");
+        }
+        const wikis = allWikis.filter(wiki => {
+          const isUserCollaborator = collaborators.find(collaborator => {});
+          if (
+            user.role == "premium" ||
+            user.role == "admin" ||
+            isUserCollaborator
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
         res.render("wikis/index", { wikis });
-      }
+      });
     });
   },
-  private(req, res, next) {
-    wikiQueries.getAllPrivateWikis((err, wikis) => {
-      if (err) {
-        res.redirect(500, "static/index");
-      } else {
-        res.render("Wikis/private", { wikis });
-      }
-    });
-  },
+
+  //   index(req, res, next) {
+  //     collaboratorQueries.getCollaborator((err, collaborators) => {
+
+  //       if (currentUser.role == "premium" || currentUser.role == "admin") {
+  //         wikiQueries.getAllWikis((err, wikis) => {
+  //           if (err) {
+  //             res.redirect(500, "static/index");
+  //           } else {
+  //             res.render("wikis/index", { wikis });
+  //           }
+  //         });
+  //       } else {
+  //         wikiQueries.getAllPublicWikis((err, wikis) => {
+  //           if (err) {
+  //             res.redirect(500, "static/index");
+  //           } else {
+  //             res.render("wikis/index", { wikis });
+  //           }
+  //         });
+  //       }
+  //     });
+  //   },
+
+  //   private(req, res, next) {
+  //     wikiQueries.getAllPrivateWikis((err, wikis) => {
+  //       if (err) {
+  //         res.redirect(500, "static/index");
+  //       } else {
+  //         res.render("Wikis/private", { wikis });
+  //       }
+  //     });
+  //   },
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
 

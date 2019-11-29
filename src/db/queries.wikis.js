@@ -4,8 +4,19 @@ const Collaborators = require("./models").Collaborators;
 const User = require("./models").User;
 
 module.exports = {
-  getAllPublicWikis(callback) {
+  getAllWikis(callback) {
     return Wiki.findAll()
+      .then(wikis => {
+        callback(null, wikis);
+      })
+      .catch(err => {
+        callback(err);
+      });
+  },
+  getAllPublicWikis(callback) {
+    return Wiki.findAll({
+      where: { private: false }
+    })
       .then(wikis => {
         callback(null, wikis);
       })
@@ -50,35 +61,6 @@ module.exports = {
         callback(null, wiki);
       })
       .catch(err => callback(err));
-    // console.log("GET WIKI RANNNNNNNNNNNN, id", id);
-    // return Wiki.findById(id)
-    //   .then(wiki => {
-    //     console.log("!!!!!callback null ", wiki);
-    //     callback(null, wiki);
-    //   })
-    //   .catch(err => {
-    //     callback(err);
-    //   });
-
-    // var result = {};
-    // return Wiki.findById(id).then(wiki => {
-    //   if (!wiki) {
-    //     // callback(404);
-    //     console.log("&&&&&&&&&&&&&&CALLBACK WIKI ", wiki);
-    //   } else {
-    //     console.log("^^^^^^^^^^ ELSE CALLBACK WIKI ", wiki);
-    //     result["wiki"] = wiki;
-    //     Collaborators.scope({ method: ["collaboratorsFor", id] })
-    //       .findAll()
-    //       .then(collaborators => {
-    //         result["collaborators"] = collaborators;
-    //         callback(null, result);
-    //       })
-    //       .catch(err => {
-    //         callback(err);
-    //       });
-    //   }
-    // });
   },
   addWiki(newWiki, callback) {
     return Wiki.create({
