@@ -50,10 +50,10 @@ module.exports = {
         callback(err, null);
       });
   },
-  getCollaborator(id, callback) {
+  getCollaborator(req, callback) {
     Collaborator.findAll({
       where: {
-        userId: id
+        userId: req.user.id
       }
     }).catch(err => {
       console.log("##############ERROR ", err);
