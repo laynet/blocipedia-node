@@ -5,14 +5,23 @@ const markdown = require("markdown").markdown;
 
 module.exports = {
   index(req, res, next) {
-    collaboratorQueries.getCollaborator(req, (err, collaborators) => {
+    wikiQueries.getAllWikis((err, allWikis) => {
       if (err) {
-        res.redirect(500, "static/index");
+        return res.redirect(500, "static/index");
       }
-      wikiQueries.getAllWikis((err, allWikis) => {
+      if (!req.user) {
+        return res.render("wikis/index", {
+          wikis: allWikis.filter(wiki => {
+            return wiki.private != true;
+          })
+        });
+      }
+
+      collaboratorQueries.getCollaborator(req, (err, collaborators) => {
         if (err) {
-          res.redirect(500, "static/index");
+          return res.redirect(500, "static/index");
         }
+
         const wikis = allWikis.filter(wiki => {
           const isUserCollaborator = collaborators.find(collaborator => {});
           if (
@@ -26,7 +35,7 @@ module.exports = {
           }
         });
 
-        res.render("wikis/index", { wikis });
+        return res.render("wikis/index", { wikis });
       });
     });
   },

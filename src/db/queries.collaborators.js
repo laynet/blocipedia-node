@@ -55,9 +55,13 @@ module.exports = {
       where: {
         userId: req.user.id
       }
-    }).catch(err => {
-      console.log("##############ERROR ", err);
-      callback(err, null);
-    });
+    })
+      .then(collaborators => {
+        callback(null, collaborators);
+      })
+      .catch(err => {
+        console.log("##############ERROR ", err);
+        callback(err, null);
+      });
   }
 };
