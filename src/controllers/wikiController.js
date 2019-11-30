@@ -46,38 +46,6 @@ module.exports = {
     });
   },
 
-  //   index(req, res, next) {
-  //     collaboratorQueries.getCollaborator((err, collaborators) => {
-
-  //       if (currentUser.role == "premium" || currentUser.role == "admin") {
-  //         wikiQueries.getAllWikis((err, wikis) => {
-  //           if (err) {
-  //             res.redirect(500, "static/index");
-  //           } else {
-  //             res.render("wikis/index", { wikis });
-  //           }
-  //         });
-  //       } else {
-  //         wikiQueries.getAllPublicWikis((err, wikis) => {
-  //           if (err) {
-  //             res.redirect(500, "static/index");
-  //           } else {
-  //             res.render("wikis/index", { wikis });
-  //           }
-  //         });
-  //       }
-  //     });
-  //   },
-
-  //   private(req, res, next) {
-  //     wikiQueries.getAllPrivateWikis((err, wikis) => {
-  //       if (err) {
-  //         res.redirect(500, "static/index");
-  //       } else {
-  //         res.render("Wikis/private", { wikis });
-  //       }
-  //     });
-  //   },
   new(req, res, next) {
     const authorized = new Authorizer(req.user).new();
 
@@ -129,13 +97,16 @@ module.exports = {
       }
     });
   },
+
   edit(req, res, next) {
-    console.log("WIKI EDIT GET WIKI ", req.params.id);
     wikiQueries.getWiki(req.params.id, (err, wiki) => {
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {
-        const authorized = new Authorizer(req.user, wiki).edit();
+        const authorized = new Authorizer(req.user, wiki).edit(
+          wiki.collaborators
+        );
+
         if (authorized) {
           res.render("wikis/edit", { wiki });
         } else {

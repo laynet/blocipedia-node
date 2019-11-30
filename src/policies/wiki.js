@@ -7,7 +7,18 @@ module.exports = class WikiPolicy extends ApplicationPolicy {
   create() {
     return this.new();
   }
-  edit() {
+  edit(collaborators) {
+    if (this.user && this.record) {
+      const isUserCollaborator = collaborators.find(collaborator => {
+        return (
+          collaborator.userId === this.user.id &&
+          collaborator.wikiId === this.record.id
+        );
+      });
+      if (isUserCollaborator) {
+        return true;
+      }
+    }
     if (this.record.private == false) {
       return this._hasUser();
     } else if (this.record.private == true) {
