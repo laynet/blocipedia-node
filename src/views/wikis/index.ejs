@@ -10,9 +10,7 @@
       <h1>Wikis</h1>
 
       <a href="/wikis/new" class="btn btn-success">New Wiki</a>
-      <% if(currentUser.role == "premium" || currentUser.role == "admin" ) { %>
-      <a href="/wikis/private" class="btn btn-success">Private Wikis</a>
-      <% } %>
+
       <ul class="list-group">
         <!-- #1 -->
         <% wikis.forEach((wiki) => { %>
