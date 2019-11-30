@@ -99,11 +99,13 @@ module.exports = {
   },
 
   updateWiki(req, updatedWiki, callback) {
-    return Wiki.findById(req.params.id).then(wiki => {
+    return this.getWiki(req.params.id, (err, wiki) => {
       if (!wiki) {
         return callback("Wiki not found");
       }
-      const authorized = new Authorizer(req.user, wiki).update();
+      const authorized = new Authorizer(req.user, wiki).update(
+        wiki.collaborators
+      );
       if (authorized) {
         wiki
           .update(updatedWiki, {
