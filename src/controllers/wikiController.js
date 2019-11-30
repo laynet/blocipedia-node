@@ -23,11 +23,17 @@ module.exports = {
         }
 
         const wikis = allWikis.filter(wiki => {
-          const isUserCollaborator = collaborators.find(collaborator => {});
+          const isUserCollaborator = collaborators.find(collaborator => {
+            return (
+              collaborator.userId === req.user.id &&
+              collaborator.wikiId === wiki.id
+            );
+          });
           if (
-            user.role == "premium" ||
-            user.role == "admin" ||
-            isUserCollaborator
+            req.user.role == "premium" ||
+            req.user.role == "admin" ||
+            isUserCollaborator ||
+            !wiki.private
           ) {
             return true;
           } else {

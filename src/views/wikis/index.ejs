@@ -18,10 +18,9 @@
         <% wikis.forEach((wiki) => { %>
         <!-- #2 -->
         <li class="list-group-item">
-          <% if(wiki.private === false) { %>
           <a href="/wikis/<%= wiki.id %>"> <%= wiki.title %> </a>
         </li>
-        <% } %> <% }) %>
+        <% }) %>
       </ul>
     </main>
   </body>
