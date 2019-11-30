@@ -116,6 +116,7 @@ module.exports = {
       }
     });
   },
+
   update(req, res, next) {
     wikiQueries.updateWiki(req, req.body, (err, wiki) => {
       if (err || wiki == null) {

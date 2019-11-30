@@ -97,6 +97,7 @@ module.exports = {
         console.log("error in delete wiki:", err);
       });
   },
+
   updateWiki(req, updatedWiki, callback) {
     return Wiki.findById(req.params.id).then(wiki => {
       if (!wiki) {
