@@ -16,7 +16,6 @@ module.exports = {
     });
   },
   edit(req, res, next) {
-    console.log("++++++++++++++REQ ", req.params.wikiId);
     wikiQueries.getWiki(req.params.wikiId, (err, wiki) => {
       const collaborators = wiki.collaborators;
       if (err || wiki == null) {
@@ -31,5 +30,18 @@ module.exports = {
         }
       }
     });
+  },
+  remove(req, res, next) {
+    if (req.user) {
+      collaboratorQueries.remove(req, (err, collaborator) => {
+        if (err) {
+          req.flash("error", err);
+        }
+        res.redirect(req.headers.referer);
+      });
+    } else {
+      req.flash("notice", "You must be signed in to remove Collaborators!");
+      res.redirect(req.headers.referer);
+    }
   }
 };
