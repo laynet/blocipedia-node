@@ -2,6 +2,9 @@
 standard collaborator can't see private wiki in index
 should premium only be able to edit and add collaborators for their own wikis?
 
+
+*****<input type="hidden" value=""<%= collaborator.user.id %> User or user???
+
 ***OTHER PROBLEMS****
 UPGRADE is still showing in the navbar after upgrading, but goes away after hitting home button, same with downgrade
 not getting a flash when non-owner tried to edit wiki

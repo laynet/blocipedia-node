@@ -15,6 +15,12 @@
           <% collaborators.forEach((collaborator) => {  %>
               <li class="list-group-item">
                     <%= collaborator.user.username %>
+                    <% if(currentUser && (currentUser.role === "premium" || currentUser.role === "admin")) { %> 
+                       <form action="/wikis/<%= wiki.id %>/collaborators/remove" method="POST">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                    <input type="hidden" value="<%= collaborator.user.id %>" class="form-control" name="collaborator">
+                    </form> 
+                        <%}%>
                            </li>
         <% }) %>
       </ul>
