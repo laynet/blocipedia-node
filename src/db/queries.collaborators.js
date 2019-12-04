@@ -64,9 +64,11 @@ module.exports = {
       });
   },
   remove(req, callback) {
+    console.log("}}}}} queries collaborator is running");
     const collaboratorId = req.body.collaborator;
+    console.log("((((((( COLLaboror ID ", collaboratorId);
     let wikiId = req.params.wikiId;
-    console.log(")))))))))))))))) WIKI ", wikiId);
+    console.log(")))))))))))))))) remove wikiId ", wikiId);
     const authorized = new Authorizer(
       req.user,
       wikiId,

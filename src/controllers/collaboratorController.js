@@ -32,6 +32,7 @@ module.exports = {
     });
   },
   remove(req, res, next) {
+    console.log("{{{{{ Collaborator Controller remove is running");
     if (req.user) {
       collaboratorQueries.remove(req, (err, collaborator) => {
         if (err) {
