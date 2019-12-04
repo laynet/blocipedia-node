@@ -64,32 +64,34 @@ module.exports = {
       });
   },
   remove(req, callback) {
-    console.log("}}}}} queries collaborator is running");
-    const collaboratorId = req.body.collaborator;
-    console.log("((((((( COLLaboror ID ", collaboratorId);
-    let wikiId = req.params.wikiId;
-    console.log(")))))))))))))))) remove wikiId ", wikiId);
-    const authorized = new Authorizer(
-      req.user,
-      wikiId,
-      collaboratorId
-    ).destroy();
-    if (authorized) {
-      Collaborator.destroy({
-        where: {
-          userId: collaboratorId,
-          wikiId: wikiId
-        }
-      })
-        .then(deletedRecordscount => {
-          callback(null, deletedRecordscount);
-        })
-        .catch(err => {
-          callback(err);
-        });
-    } else {
-      req.flash("notice", "You are not authorized to do that.");
-      callback(401);
-    }
+    console.log("fucking kill me");
+    //     console.log("}}}}} queries collaborator is running");
+    //     const collaboratorId = req.body.collaborator;
+    //     console.log("((((((( COLLaboror ID ", collaboratorId);
+    //     let wikiId = req.params.wikiId;
+    //     console.log(")))))))))))))))) remove wikiId ", wikiId);
+    //     const authorized = new Authorizer(
+    //       req.user,
+    //       wikiId,
+    //       collaboratorId
+    //     ).destroy();
+    //     console.log("=======Authorized ", authorized);
+    //     if (authorized) {
+    //       Collaborator.destroy({
+    //         where: {
+    //           userId: collaboratorId,
+    //           wikiId: wikiId
+    //         }
+    //       })
+    //         .then(deletedRecordscount => {
+    //           callback(null, deletedRecordscount);
+    //         })
+    //         .catch(err => {
+    //           callback(err);
+    //         });
+    //     } else {
+    //       req.flash("notice", "You are not authorized to do that.");
+    //       callback(401);
+    //     }
   }
 };
