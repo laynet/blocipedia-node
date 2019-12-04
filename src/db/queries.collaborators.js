@@ -2,6 +2,7 @@ const User = require("./models").User;
 const Wiki = require("./models").Wiki;
 const Collaborator = require("./models").Collaborators;
 const Authorizer = require("../policies/application");
+const wikiQueries = require("../db/queries.wikis.js");
 
 module.exports = {
   add(req, callback) {
@@ -75,6 +76,13 @@ module.exports = {
           wiki,
           collaborators
         ).destroy();
+      }
+      if (authorized) {
+        //don't know what to do here
+        console.log("shouldn't have gone to art school");
+      } else {
+        req.flash("You are not authorized to do that.");
+        res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
       }
     });
   }
