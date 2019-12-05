@@ -64,35 +64,23 @@ module.exports = {
         callback(err, null);
       });
   },
-  remove(req, callback) {
+  remove(req, res, callback) {
     const authorized = new Authorizer(req.user);
     if (authorized) {
-      Collaborator.findAll({
+      Collaborator.destroy({
         where: {
           userId: req.body.collaborator,
           wikiId: req.params.wikiId
         }
-        // Remember that the collaborator model has userId and wikId
-        // You need to look up collaborator records where userId is equal to `req.body.collaborator`
-        // and wikiId is equal to `req.params.wikiId`
       })
-        .destroy()
         .then(() => {
-          req.flash("Collaborator was deleted");
-          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-          // flash notice that the collaborator was deleted
-          // redirect back to the page they were on
+          callback(null);
         })
         .catch(err => {
-          req.flash("Error");
-          console.log(err);
-          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-          // flash notice that there was an error
-          // redirect back to the page they were on
+          callback(err);
         });
     } else {
-      req.flash("You are not authorized to do that.");
-      res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+      callback(401);
     }
   }
 };

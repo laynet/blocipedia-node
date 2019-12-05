@@ -37,8 +37,11 @@ module.exports = {
       collaboratorQueries.remove(req, (err, collaborator) => {
         if (err) {
           req.flash("error", err);
+          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
         }
-        res.redirect(req.headers.referer);
+        // res.redirect(req.headers.referer);
+        req.flash("Collaborator was deleted");
+        res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
       });
     } else {
       req.flash("notice", "You must be signed in to remove Collaborators!");
@@ -46,3 +49,25 @@ module.exports = {
     }
   }
 };
+// remove(req, res, next) {
+//     console.log("{{{{{ Collaborator Controller remove is running");
+//     if (req.user) {
+//       collaboratorQueries.remove(req, (err, collaborator) => {
+//         if (err) {
+//           // flash notice that there was an error
+//           // redirect back to the page they were on
+//           req.flash("error", err);
+//           res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+//           return
+//         }
+
+//         // flash notice that the collaborator was deleted
+//         // redirect back to the page they were on
+//         req.flash("Collaborator was deleted");
+//         res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+//        });
+//     } else {
+//       req.flash("notice", "You must be signed in to remove Collaborators!");
+//       res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+//     }
+//   }
