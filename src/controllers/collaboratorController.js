@@ -37,11 +37,13 @@ module.exports = {
       collaboratorQueries.remove(req, (err, collaborator) => {
         if (err) {
           req.flash("error", err);
-          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+          //   res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+          res.redirect(`/wikis/${req.params.wikiId}/collaborators/edit`);
         }
         // res.redirect(req.headers.referer);
         req.flash("Collaborator was deleted");
-        res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+        // res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+        res.redirect(`/wikis/${req.params.wikiId}/collaborators/edit`);
       });
     } else {
       req.flash("notice", "You must be signed in to remove Collaborators!");
