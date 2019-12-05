@@ -38,12 +38,13 @@ module.exports = {
         if (err) {
           req.flash("error", err);
           //   res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-          res.redirect(`/wikis/${req.params.wikiId}/collaborators/edit`);
+          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+          return;
         }
         // res.redirect(req.headers.referer);
         req.flash("Collaborator was deleted");
         // res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-        res.redirect(`/wikis/${req.params.wikiId}/collaborators/edit`);
+        res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
       });
     } else {
       req.flash("notice", "You must be signed in to remove Collaborators!");

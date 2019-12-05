@@ -64,7 +64,7 @@ module.exports = {
         callback(err, null);
       });
   },
-  remove(req, res, callback) {
+  remove(req, callback) {
     const authorized = new Authorizer(req.user);
     if (authorized) {
       Collaborator.destroy({
