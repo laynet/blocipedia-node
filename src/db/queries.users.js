@@ -34,10 +34,8 @@ module.exports = {
       });
   },
   downgrade(req, callback) {
-    console.log("DOWNGRADE QUERY @@@@@@@@@@@@@@@@@@@", req.params.id);
     return User.findById(req.params.id)
       .then(user => {
-        console.log("^^^^^^^^^^QUERY USER", user);
         user.update({ role: "standard" });
         callback(null, user);
       })

@@ -6,7 +6,6 @@ const wikiQueries = require("../db/queries.wikis.js");
 
 module.exports = {
   add(req, callback) {
-    console.log("COLLAB QUERIES REQ USER ");
     if (req.user.username == req.body.collaborator) {
       return callback("Cannot add yourself to collaborators!");
     }

@@ -6,7 +6,6 @@ const Authorizer = require("../policies/application");
 
 module.exports = {
   add(req, res, next) {
-    console.log("@@@@@@@@@@@COLLAB ADD RAN - REQ.user ", req.user);
     collaboratorQueries.add(req, (err, collaborator) => {
       if (err) {
         console.log(err);
@@ -32,18 +31,17 @@ module.exports = {
     });
   },
   remove(req, res, next) {
-    console.log("{{{{{ Collaborator Controller remove is running");
     if (req.user) {
       collaboratorQueries.remove(req, (err, collaborator) => {
         if (err) {
           req.flash("error", err);
-          //   res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+
           res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
           return;
         }
-        // res.redirect(req.headers.referer);
+
         req.flash("Collaborator was deleted");
-        // res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+
         res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
       });
     } else {
@@ -52,25 +50,3 @@ module.exports = {
     }
   }
 };
-// remove(req, res, next) {
-//     console.log("{{{{{ Collaborator Controller remove is running");
-//     if (req.user) {
-//       collaboratorQueries.remove(req, (err, collaborator) => {
-//         if (err) {
-//           // flash notice that there was an error
-//           // redirect back to the page they were on
-//           req.flash("error", err);
-//           res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-//           return
-//         }
-
-//         // flash notice that the collaborator was deleted
-//         // redirect back to the page they were on
-//         req.flash("Collaborator was deleted");
-//         res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-//        });
-//     } else {
-//       req.flash("notice", "You must be signed in to remove Collaborators!");
-//       res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-//     }
-//   }

@@ -78,7 +78,6 @@ module.exports = {
     }
   },
   show(req, res, next) {
-    console.log("WIKI SHOW GET WIKI ", req.params.id);
     wikiQueries.getWiki(req.params.id, (err, wiki) => {
       if (err || wiki == null) {
         res.redirect(404, "/");
