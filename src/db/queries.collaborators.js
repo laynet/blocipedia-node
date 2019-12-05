@@ -65,7 +65,7 @@ module.exports = {
       });
   },
   remove(req, callback) {
-    const authorized = new Authorizer(req.user, wiki, collaborators);
+    const authorized = new Authorizer(req.user);
     if (authorized) {
       Collaborator.findAll({
         where: {
