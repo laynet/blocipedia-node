@@ -65,53 +65,34 @@ module.exports = {
       });
   },
   remove(req, callback) {
-    console.log("}}}}} queries collaborator is running");
-    wikiQueries.getWiki(req.params.wikiId, (err, wiki) => {
-      const collaborators = wiki.collaborators;
-      if (err || wiki == null) {
-        res.redirect(404, "/");
-      } else {
-        const authorized = new Authorizer(
-          req.user,
-          wiki,
-          collaborators
-        ).destroy();
-      }
-      if (authorized) {
-        //don't know what to do here
-        console.log("shouldn't have gone to art school");
-      } else {
-        req.flash("You are not authorized to do that.");
-        res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
-      }
-    });
+    const authorized = new Authorizer(req.user, wiki, collaborators);
+    if (authorized) {
+      Collaborator.findAll({
+        where: {
+          userId: req.body.collaborator,
+          wikiId: req.params.wikiId
+        }
+        // Remember that the collaborator model has userId and wikId
+        // You need to look up collaborator records where userId is equal to `req.body.collaborator`
+        // and wikiId is equal to `req.params.wikiId`
+      })
+        .destroy()
+        .then(() => {
+          req.flash("Collaborator was deleted");
+          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+          // flash notice that the collaborator was deleted
+          // redirect back to the page they were on
+        })
+        .catch(err => {
+          req.flash("Error");
+          console.log(err);
+          res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+          // flash notice that there was an error
+          // redirect back to the page they were on
+        });
+    } else {
+      req.flash("You are not authorized to do that.");
+      res.redirect(`/wikis/${req.params.wikiId}/collaborators`);
+    }
   }
 };
-
-//     const collaboratorId = req.body.collaborator;
-//     console.log("((((((( COLLaboror ID ", collaboratorId);
-//     let wikiId = req.params.wikiId;
-//     console.log(")))))))))))))))) remove wikiId ", wikiId);
-//     const authorized = new Authorizer(
-//       req.user,
-//       wikiId,
-//       collaboratorId
-//     ).destroy();
-//     console.log("=======Authorized ", authorized);
-//     if (authorized) {
-//       Collaborator.destroy({
-//         where: {
-//           userId: collaboratorId,
-//           wikiId: wikiId
-//         }
-//       })
-//         .then(deletedRecordscount => {
-//           callback(null, deletedRecordscount);
-//         })
-//         .catch(err => {
-//           callback(err);
-//         });
-//     } else {
-//       req.flash("notice", "You are not authorized to do that.");
-//       callback(401);
-//     }

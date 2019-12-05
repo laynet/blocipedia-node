@@ -36,9 +36,7 @@ module.exports = class ApplicationPolicy {
       );
     } else if (this.record.private == true) {
       return (
-        this.new() &&
-        this.record &&
-        (this._isStandard() || this._isAdmin() || this._isPremium())
+        this.new() && this.record && (this._isAdmin() || this._isPremium())
       );
     }
   }
